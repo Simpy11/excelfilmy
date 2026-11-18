@@ -1,0 +1,109 @@
+.film-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #000000;
+  animation: film-preloader-fade 180ms ease-out 820ms forwards;
+}
+
+.film-preloader__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(360px, 86vw);
+  color: #F7EBDD;
+  text-align: center;
+  animation: film-preloader-arrive 260ms ease-out both;
+}
+
+.film-preloader__reel-wrap {
+  position: relative;
+  width: clamp(150px, 24vw, 190px);
+  aspect-ratio: 1;
+}
+
+.film-preloader__reel {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 24px rgba(239, 174, 67, .12));
+  animation: film-reel-turn 1s linear both;
+}
+
+.film-preloader__spark {
+  position: absolute;
+  top: 8%;
+  right: 12%;
+  z-index: 1;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #EFAE43;
+  box-shadow: 0 0 9px 3px rgba(239, 174, 67, .55), 0 0 25px 6px rgba(239, 174, 67, .2);
+  animation: film-spark 520ms ease-in-out infinite alternate;
+}
+
+.film-preloader__strip {
+  width: min(210px, 58vw);
+  height: 10px;
+  margin-top: 21px;
+  overflow: hidden;
+  border-top: 1px solid rgba(247, 235, 221, .45);
+  border-bottom: 1px solid rgba(247, 235, 221, .45);
+}
+
+.film-preloader__strip span {
+  display: block;
+  width: 200%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0 12px,
+    #EFAE43 12px 17px,
+    transparent 17px 30px
+  );
+  animation: film-strip-travel 1s linear both;
+}
+
+.film-preloader__wordmark {
+  margin: 28px 0 0;
+  color: #F7EBDD;
+  font: 500 15px/1.2 Outfit, Arial, sans-serif;
+  letter-spacing: .3em;
+  text-indent: .3em;
+}
+
+.film-preloader__tagline {
+  margin: 10px 0 0;
+  color: #EFAE43;
+  font: 400 9px/1.4 Outfit, Arial, sans-serif;
+  letter-spacing: .22em;
+  text-indent: .22em;
+}
+
+@keyframes film-reel-turn {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes film-strip-travel {
+  from { transform: translateX(-45%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes film-spark {
+  from { opacity: .45; transform: scale(.75); }
+  to { opacity: 1; transform: scale(1.15); }
+}
+
+@keyframes film-preloader-arrive {
+  from { opacity: 0; transform: translateY(9px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes film-preloader-fade {
+  to { opacity: 0; visibility: hidden; }
+}

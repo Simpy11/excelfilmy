@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
 import FilmPreloader, { FilmPreloaderErrorBoundary } from './FilmPreloader.jsx';
 import './style.css';
+import './banner-images.css';
 
 class AppErrorBoundary extends React.Component {
   state = { failed: false };
